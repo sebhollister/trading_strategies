@@ -51,9 +51,9 @@ def buy_sell_hold(*args):
             return 1
         if col < -0.035:
             return -1"""
-    if sum(cols) > 0.1:
+    if sum(cols) > 0.05:
         return 1
-    if sum(cols) < -0.02:
+    if sum(cols) < -0.05:
         return -1
     return 0
 
@@ -71,7 +71,7 @@ def extract_featuresets(ticker):
    
     vals = df['{}_target'.format(ticker)].values.tolist()
     str_vals = [str(i) for i in vals]
-    print('Data spread: ', Counter(str_vals))
+    print('Data spread: {} '.format(ticker), Counter(str_vals))
     
     df.fillna(0, inplace=True)
     df= df.replace([np.inf, -np.inf], np.nan)
